@@ -4,8 +4,8 @@ import os
 from flask import Blueprint, request, jsonify
 from pywebpush import webpush, WebPushException
 
-# 🚀 NotifyX Flask Blueprint
-notifyx_bp = Blueprint('notifyx', __name__)
+# 🚀 @nandish029/notifyx Flask Blueprint
+@nandish029/notifyx_bp = Blueprint('@nandish029/notifyx', __name__)
 
 # ⚠️ MOCK DATABASE: Replace with SQLAlchemy, PyMongo, etc.
 mock_database = []
@@ -20,41 +20,41 @@ def delete_from_db(endpoint):
 def get_all_subscriptions():
     return mock_database
 
-@notifyx_bp.route('/subscribe', methods=['POST'])
+@@nandish029/notifyx_bp.route('/subscribe', methods=['POST'])
 def subscribe():
     subscription = request.get_json()
     
     # Strict validation
     if not subscription or 'endpoint' not in subscription or 'keys' not in subscription:
-        return jsonify({'error': '[NotifyX] Invalid subscription payload.'}), 400
+        return jsonify({'error': '[@nandish029/notifyx] Invalid subscription payload.'}), 400
 
     try:
         save_to_db(subscription)
         return jsonify({'message': 'Subscription saved.'}), 201
     except Exception as e:
-        print(f"[NotifyX] DB Save Error: {e}")
+        print(f"[@nandish029/notifyx] DB Save Error: {e}")
         return jsonify({'error': 'Internal server error'}), 500
 
-@notifyx_bp.route('/unsubscribe', methods=['DELETE'])
+@@nandish029/notifyx_bp.route('/unsubscribe', methods=['DELETE'])
 def unsubscribe():
     data = request.get_json()
     endpoint = data.get('endpoint')
     
     if not endpoint:
-        return jsonify({'error': '[NotifyX] Endpoint required.'}), 400
+        return jsonify({'error': '[@nandish029/notifyx] Endpoint required.'}), 400
 
     try:
         delete_from_db(endpoint)
         return jsonify({'message': 'Subscription removed.'}), 200
     except Exception as e:
-        print(f"[NotifyX] DB Delete Error: {e}")
+        print(f"[@nandish029/notifyx] DB Delete Error: {e}")
         return jsonify({'error': 'Internal server error'}), 500
 
-@notifyx_bp.route('/broadcast', methods=['POST'])
+@@nandish029/notifyx_bp.route('/broadcast', methods=['POST'])
 def broadcast():
     data = request.get_json()
     
-    # NotifyX strict payload schema
+    # @nandish029/notifyx strict payload schema
     payload = json.dumps({
         "title": data.get('title', 'System Update'),
         "body": data.get('body', 'You have a new notification.'),
@@ -82,10 +82,10 @@ def broadcast():
             # EDGE CASE: 410 Gone means the user blocked notifications in their browser settings.
             # We must delete them from the database to prevent future errors.
             if ex.response and ex.response.status_code in [410, 404]:
-                print(f"[NotifyX] Subscription expired. Cleaning up DB for: {sub['endpoint']}")
+                print(f"[@nandish029/notifyx] Subscription expired. Cleaning up DB for: {sub['endpoint']}")
                 delete_from_db(sub['endpoint'])
             else:
-                print(f"[NotifyX] Push failed: {repr(ex)}")
+                print(f"[@nandish029/notifyx] Push failed: {repr(ex)}")
             fail_count += 1
 
     return jsonify({

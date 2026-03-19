@@ -1,19 +1,19 @@
-# ⚛️ How to use NotifyX in React or Next.js (Simple Guide)
+# ⚛️ How to use @nandish029/notifyx in React or Next.js (Simple Guide)
 
 Welcome! This guide will help you add a "Turn on Notifications" button to your React website. 
 
 You do not need to know how the complicated browser Push APIs work. We have written all the hard code for you. You just need to copy, paste, and add your secret keys.
 
 ## Step 1: Install the Package
-First, open your terminal (command line), go to your frontend folder, and tell npm to download the core NotifyX tool:
+First, open your terminal (command line), go to your frontend folder, and tell npm to download the core @nandish029/notifyx tool:
 \`\`\`bash
-npm install notifyx
+npm install @nandish029/notifyx
 \`\`\`
 
 ## Step 2: Move the "Service Worker" (Very Important!)
 A "Service Worker" is a tiny JavaScript file that runs in the background of a user's browser, even when your website is closed. It is the thing that actually pops up the notification on the screen.
 
-1. Go into your `node_modules/notifyx/frontend/` folder.
+1. Go into your `node_modules/@nandish029/notifyx/frontend/` folder.
 2. Find the file named `sw.js`.
 3. Copy it and paste it into your project's **`public`** folder. 
 
@@ -21,7 +21,7 @@ A "Service Worker" is a tiny JavaScript file that runs in the background of a us
 
 ## Step 3: Copy the React Files
 Copy the two files we provided into your React project:
-1. Put `useNotifyX.js` into your `hooks` folder.
+1. Put `use@nandish029/notifyx.js` into your `hooks` folder.
 2. Put `SubscribeButton.jsx` into your `components` folder.
 
 ## Step 4: Add your VAPID Key

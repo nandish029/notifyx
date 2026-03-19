@@ -1,6 +1,6 @@
 # ⚠️ Framework Limitations & Rules
 
-To use NotifyX effectively in production, you must understand the strict boundaries enforced by modern web browsers.
+To use @nandish029/notifyx effectively in production, you must understand the strict boundaries enforced by modern web browsers.
 
 ## 1. HTTPS is Strictly Required
 **The Rule:** The Push API will completely fail on `http://`.

@@ -1,4 +1,4 @@
-# 🟢 How to use NotifyX in Node.js (Simple Guide)
+# 🟢 How to use @nandish029/notifyx in Node.js (Simple Guide)
 
 Welcome! While the React frontend *asks* the user for permission, your Node.js backend is the "Post Office". It stores the addresses (subscriptions) and actually *mails out* the notifications.
 
@@ -44,7 +44,7 @@ webpush.setVapidDetails(
   process.env.VAPID_PRIVATE_KEY
 );
 
-// 2. Turn on the NotifyX routes
+// 2. Turn on the @nandish029/notifyx routes
 const pushRoutes = require('./routes/push.controller');
 app.use('/api/notifications', pushRoutes);
 

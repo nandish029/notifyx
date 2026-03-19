@@ -3,7 +3,7 @@ const webpush = require('web-push');
 const router = express.Router();
 
 /**
- * 🚀 NotifyX Express Router
+ * 🚀 @nandish029/notifyx Express Router
  * * SETUP: You must configure web-push with your VAPID keys before using this router.
  * Typically done in your main server.js:
  * * webpush.setVapidDetails(
@@ -30,14 +30,14 @@ router.post('/subscribe', async (req, res) => {
 
     // Strict Validation: Ensure the object is a valid Web Push subscription
     if (!subscription || !subscription.endpoint || !subscription.keys || !subscription.keys.p256dh || !subscription.keys.auth) {
-        return res.status(400).json({ error: '[NotifyX] Invalid subscription object format.' });
+        return res.status(400).json({ error: '[@nandish029/notifyx] Invalid subscription object format.' });
     }
 
     try {
         await saveToDB(subscription);
         res.status(201).json({ message: 'Subscription saved successfully.' });
     } catch (error) {
-        console.error('[NotifyX] Database save failed:', error);
+        console.error('[@nandish029/notifyx] Database save failed:', error);
         res.status(500).json({ error: 'Internal server error.' });
     }
 });
@@ -50,14 +50,14 @@ router.delete('/unsubscribe', async (req, res) => {
     const { endpoint } = req.body;
 
     if (!endpoint) {
-        return res.status(400).json({ error: '[NotifyX] Endpoint is required to unsubscribe.' });
+        return res.status(400).json({ error: '[@nandish029/notifyx] Endpoint is required to unsubscribe.' });
     }
 
     try {
         await deleteFromDB(endpoint);
         res.status(200).json({ message: 'Subscription removed successfully.' });
     } catch (error) {
-        console.error('[NotifyX] Database delete failed:', error);
+        console.error('[@nandish029/notifyx] Database delete failed:', error);
         res.status(500).json({ error: 'Internal server error.' });
     }
 });
@@ -69,7 +69,7 @@ router.delete('/unsubscribe', async (req, res) => {
 router.post('/broadcast', async (req, res) => {
     const { title, body, url, tag, actions } = req.body;
 
-    // Build the payload matching the strict NotifyX schema
+    // Build the payload matching the strict @nandish029/notifyx schema
     const payload = JSON.stringify({
         title: title || 'System Update',
         body: body || 'You have a new notification.',
@@ -93,10 +93,10 @@ router.post('/broadcast', async (req, res) => {
                 // EDGE CASE: If error is 410 (Gone) or 404 (Not Found), the user revoked permission 
                 // at the browser level. We MUST delete their dead subscription from our DB.
                 if (error.statusCode === 410 || error.statusCode === 404) {
-                    console.warn(`[NotifyX] Subscription expired for endpoint. Cleaning up database.`);
+                    console.warn(`[@nandish029/notifyx] Subscription expired for endpoint. Cleaning up database.`);
                     await deleteFromDB(sub.endpoint);
                 } else {
-                    console.error('[NotifyX] Push delivery failed:', error);
+                    console.error('[@nandish029/notifyx] Push delivery failed:', error);
                 }
                 failCount++;
             }
@@ -108,7 +108,7 @@ router.post('/broadcast', async (req, res) => {
         });
 
     } catch (error) {
-        console.error('[NotifyX] Broadcast execution failed:', error);
+        console.error('[@nandish029/notifyx] Broadcast execution failed:', error);
         res.status(500).json({ error: 'Failed to process broadcast.' });
     }
 });

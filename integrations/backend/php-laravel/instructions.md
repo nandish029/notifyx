@@ -1,4 +1,4 @@
-# 🐘 How to use NotifyX in PHP
+# 🐘 How to use @nandish029/notifyx in PHP
 
 Welcome! Whether you are using plain PHP, Laravel, or Symfony, this guide will help you set up your server to send push notifications. 
 

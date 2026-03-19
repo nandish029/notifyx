@@ -6,7 +6,7 @@ use Minishlink\WebPush\WebPush;
 use Minishlink\WebPush\Subscription;
 
 /**
- * 🚀 NotifyX PHP Controller
+ * 🚀 @nandish029/notifyx PHP Controller
  * Requires: composer require minishlink/web-push
  */
 class PushNotificationController {
@@ -38,7 +38,7 @@ class PushNotificationController {
         
         if (!isset($data['endpoint']) || !isset($data['keys'])) {
             http_response_code(400);
-            echo json_encode(['error' => '[NotifyX] Invalid payload']);
+            echo json_encode(['error' => '[@nandish029/notifyx] Invalid payload']);
             return;
         }
 
@@ -55,7 +55,7 @@ class PushNotificationController {
         
         if (!isset($data['endpoint'])) {
             http_response_code(400);
-            echo json_encode(['error' => '[NotifyX] Endpoint missing']);
+            echo json_encode(['error' => '[@nandish029/notifyx] Endpoint missing']);
             return;
         }
 
@@ -102,10 +102,10 @@ class PushNotificationController {
                 // EDGE CASE: 410 or 404 means the user blocked permissions manually.
                 $statusCode = $report->getResponse() ? $report->getResponse()->getStatusCode() : 0;
                 if ($statusCode === 410 || $statusCode === 404) {
-                    error_log("[NotifyX] User revoked permission. Deleting: {$endpoint}");
+                    error_log("[@nandish029/notifyx] User revoked permission. Deleting: {$endpoint}");
                     $this->deleteFromDB($endpoint);
                 } else {
-                    error_log("[NotifyX] Push failed for {$endpoint}: {$report->getReason()}");
+                    error_log("[@nandish029/notifyx] Push failed for {$endpoint}: {$report->getReason()}");
                 }
             }
         }

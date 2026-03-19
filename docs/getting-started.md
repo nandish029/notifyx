@@ -7,12 +7,12 @@
 
 Implementing web push notifications from scratch requires cooperation between three pieces: your frontend JavaScript, a background Service Worker, and your backend server. 
 
-NotifyX handles the frontend and Service Worker logic for you. Here is the step-by-step guide to setting up the core engine.
+@nandish029/notifyx handles the frontend and Service Worker logic for you. Here is the step-by-step guide to setting up the core engine.
 
 ---
 
 ## Step 1: Place the Service Worker
-You must copy the `sw.js` file from `node_modules/notifyx/frontend/sw.js` and place it in the **root** of your public folder (e.g., the root directory of your web server).
+You must copy the `sw.js` file from `node_modules/@nandish029/notifyx/frontend/sw.js` and place it in the **root** of your public folder (e.g., the root directory of your web server).
 
 **🤔 Why? (The Scope Rule)**
 Service Workers have a strict security concept called "scope." A Service Worker can only control pages that sit in the same directory or subdirectories as the worker script itself. 
@@ -20,16 +20,16 @@ Service Workers have a strict security concept called "scope." A Service Worker 
 * **Correct:** By putting it in the root (`/sw.js`), it has permission to display notifications across your **entire application**.
 
 ## Step 2: Configure the Framework
-At the very beginning of your application lifecycle (e.g., `app.js` or `index.js`), you must configure NotifyX with your VAPID public key.
+At the very beginning of your application lifecycle (e.g., `app.js` or `index.js`), you must configure @nandish029/notifyx with your VAPID public key.
 
 \`\`\`javascript
-import { setupNotifyX } from 'notifyx';
+import { setup@nandish029/notifyx } from '@nandish029/notifyx';
 
-setupNotifyX({
+setup@nandish029/notifyx({
   publicKey: 'BEl62i...<Your Base64 VAPID Key>...',
   debug: true, // Set to false in production
   hooks: {
-    onError: (err) => console.error("NotifyX Error:", err)
+    onError: (err) => console.error("@nandish029/notifyx Error:", err)
   }
 });
 \`\`\`
@@ -50,7 +50,7 @@ button.addEventListener('click', async () => {
         
         // NEXT STEP: Send this `subscription` object to your backend!
     } catch (error) {
-        // NotifyX will tell you exactly what went wrong (e.g., "Permission Denied")
+        // @nandish029/notifyx will tell you exactly what went wrong (e.g., "Permission Denied")
         alert(error.message); 
     }
 });

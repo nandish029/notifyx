@@ -1,4 +1,4 @@
-// notifyx/frontend/core.js
+// @nandish029/notifyx/frontend/core.js
 
 import { urlBase64ToUint8Array, withTimeout } from './utils.js';
 
@@ -29,7 +29,7 @@ let config = {
  */
 function logDebug(message, ...args) {
   if (config.debug) {
-    console.log(`[NotifyX DEBUG] ${message}`, ...args);
+    console.log(`[@nandish029/notifyx DEBUG] ${message}`, ...args);
   }
 }
 
@@ -44,20 +44,20 @@ function runHookSafe(hookName, payload = null) {
     try {
       config.hooks[hookName](payload);
     } catch (err) {
-      console.warn(`[NotifyX] Hook "${hookName}" failed: ${err.message}`);
+      console.warn(`[@nandish029/notifyx] Hook "${hookName}" failed: ${err.message}`);
     }
   }
 }
 
 /**
- * 🚀 setupNotifyX()
+ * 🚀 setup@nandish029/notifyx()
  *
  * MUST be called once before anything else
  */
-export function setupNotifyX(userConfig) {
+export function setup@nandish029/notifyx(userConfig) {
   // ❌ Prevent duplicate setup
   if (isConfigured) {
-    throw new Error('[NotifyX] setupNotifyX() already called.');
+    throw new Error('[@nandish029/notifyx] setup@nandish029/notifyx() already called.');
   }
 
   // 🔐 Check HTTPS requirement
@@ -68,13 +68,13 @@ export function setupNotifyX(userConfig) {
 
   if (!isSecure) {
     console.warn(
-      '[NotifyX] Push requires HTTPS or localhost. This may fail.'
+      '[@nandish029/notifyx] Push requires HTTPS or localhost. This may fail.'
     );
   }
 
   // ❌ Validate publicKey
   if (!userConfig || typeof userConfig.publicKey !== 'string') {
-    throw new Error('[NotifyX] publicKey is required and must be a string.');
+    throw new Error('[@nandish029/notifyx] publicKey is required and must be a string.');
   }
 
   // Store config
@@ -85,14 +85,14 @@ export function setupNotifyX(userConfig) {
   try {
     cachedApplicationServerKey = urlBase64ToUint8Array(config.publicKey);
   } catch (err) {
-    throw new Error('[NotifyX] Invalid VAPID publicKey format.');
+    throw new Error('[@nandish029/notifyx] Invalid VAPID publicKey format.');
   }
 
   // Service worker path handling
   if (userConfig.swPath) {
     if (!userConfig.swPath.startsWith('/')) {
       console.warn(
-        '[NotifyX] swPath should start with "/" for proper scope.'
+        '[@nandish029/notifyx] swPath should start with "/" for proper scope.'
       );
     }
     config.swPath = userConfig.swPath;
@@ -138,21 +138,21 @@ export async function getSubscriptionStatus() {
  */
 export async function initNotifications() {
   if (!isConfigured) {
-    throw new Error('[NotifyX] setupNotifyX() must be called first.');
+    throw new Error('[@nandish029/notifyx] setup@nandish029/notifyx() must be called first.');
   }
 
   if (!('Notification' in window)) {
-    throw new Error('[NotifyX] Notification API not supported.');
+    throw new Error('[@nandish029/notifyx] Notification API not supported.');
   }
 
   if (!('serviceWorker' in navigator) || !('PushManager' in window)) {
-    throw new Error('[NotifyX] Push API not supported.');
+    throw new Error('[@nandish029/notifyx] Push API not supported.');
   }
 
   // ❌ If already denied → cannot ask again
   if (Notification.permission === 'denied') {
     const err = new Error(
-      '[NotifyX] Notifications are blocked. Enable from browser settings.'
+      '[@nandish029/notifyx] Notifications are blocked. Enable from browser settings.'
     );
 
     runHookSafe('onPermissionDenied', 'denied');
@@ -169,7 +169,7 @@ export async function initNotifications() {
 
       if (permission !== 'granted') {
         runHookSafe('onPermissionDenied', permission);
-        throw new Error('[NotifyX] Permission denied.');
+        throw new Error('[@nandish029/notifyx] Permission denied.');
       }
     }
 
@@ -188,7 +188,7 @@ export async function initNotifications() {
     await withTimeout(
       navigator.serviceWorker.ready,
       10000,
-      '[NotifyX] Service Worker timed out'
+      '[@nandish029/notifyx] Service Worker timed out'
     );
 
     // 🔁 Check existing subscription
@@ -211,9 +211,9 @@ export async function initNotifications() {
   } catch (err) {
     runHookSafe('onError', err);
 
-    if (err.message.startsWith('[NotifyX]')) throw err;
+    if (err.message.startsWith('[@nandish029/notifyx]')) throw err;
 
-    throw new Error(`[NotifyX] Failed: ${err.message}`);
+    throw new Error(`[@nandish029/notifyx] Failed: ${err.message}`);
   }
 }
 
@@ -224,7 +224,7 @@ export async function initNotifications() {
  */
 export async function disableNotifications() {
   if (!isConfigured) {
-    throw new Error('[NotifyX] setupNotifyX() must be called first.');
+    throw new Error('[@nandish029/notifyx] setup@nandish029/notifyx() must be called first.');
   }
 
   const subscription = await getSubscriptionStatus();
@@ -239,7 +239,7 @@ export async function disableNotifications() {
 
     if (success) {
       console.warn(
-        '[NotifyX] Subscription removed. Also delete it from backend.'
+        '[@nandish029/notifyx] Subscription removed. Also delete it from backend.'
       );
 
       runHookSafe('onUnsubscribe');
@@ -251,11 +251,11 @@ export async function disableNotifications() {
 
     if (Notification.permission === 'denied') {
       error = new Error(
-        '[NotifyX] Unsubscribe failed: permission revoked.'
+        '[@nandish029/notifyx] Unsubscribe failed: permission revoked.'
       );
     } else {
       error = new Error(
-        `[NotifyX] Unsubscribe failed: ${err.message}`
+        `[@nandish029/notifyx] Unsubscribe failed: ${err.message}`
       );
     }
 

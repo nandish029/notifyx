@@ -1,4 +1,4 @@
-// notifyx/frontend/utils.js
+// @nandish029/notifyx/frontend/utils.js
 
 /**
  * 🔐 WHY THIS FUNCTION EXISTS:
@@ -48,7 +48,7 @@ export function urlBase64ToUint8Array(base64String) {
 export function withTimeout(
   promise,
   ms = 5000,
-  timeoutMessage = '[NotifyX] Operation timed out'
+  timeoutMessage = '[@nandish029/notifyx] Operation timed out'
 ) {
   return Promise.race([
     promise,

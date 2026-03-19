@@ -1,4 +1,4 @@
-// notifyx/frontend/index.js
+// @nandish029/notifyx/frontend/index.js
 
 /**
  * 🌐 PUBLIC API
@@ -12,7 +12,7 @@
 
 export {
   VERSION,
-  setupNotifyX,
+  setup@nandish029/notifyx,
   initNotifications,
   disableNotifications,
   getSubscriptionStatus,

@@ -1,8 +1,8 @@
 # 📖 API Reference
 
-NotifyX exposes five primary exports. 
+@nandish029/notifyx exposes five primary exports. 
 
-## `setupNotifyX(config)`
+## `setup@nandish029/notifyx(config)`
 Must be called exactly once before any other framework methods.
 
 * **Arguments:**

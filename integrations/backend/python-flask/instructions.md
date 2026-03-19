@@ -1,4 +1,4 @@
-# 🐍 How to use NotifyX in Python (Flask)
+# 🐍 How to use @nandish029/notifyx in Python (Flask)
 
 Welcome! This guide will show you how to turn your Flask server into a push notification "Post Office." 
 
@@ -20,7 +20,7 @@ CONTACT_EMAIL="mailto:your_email@gmail.com"
 \`\`\`
 *(Note: You must include `mailto:` in the email. Push services use this to contact you if your server sends too much spam).*
 
-## Step 3: Plug in the NotifyX Routes
+## Step 3: Plug in the @nandish029/notifyx Routes
 1. Copy the `push_routes.py` file we provided and put it in your project.
 2. Open your main `app.py` file and plug the routes in like this:
 
@@ -28,14 +28,14 @@ CONTACT_EMAIL="mailto:your_email@gmail.com"
 from flask import Flask
 from dotenv import load_dotenv
 
-# Import the NotifyX Blueprint we wrote for you
-from push_routes import notifyx_bp
+# Import the @nandish029/notifyx Blueprint we wrote for you
+from push_routes import @nandish029/notifyx_bp
 
 load_dotenv()
 app = Flask(__name__)
 
 # This turns on the routes so your React frontend can talk to them!
-app.register_blueprint(notifyx_bp, url_prefix='/api/notifications')
+app.register_blueprint(@nandish029/notifyx_bp, url_prefix='/api/notifications')
 
 if __name__ == '__main__':
     app.run(port=5000)

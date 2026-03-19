@@ -1,4 +1,4 @@
-// notifyx/frontend/sw.js
+// @nandish029/notifyx/frontend/sw.js
 
 /**
  * 📡 PUSH EVENT
@@ -14,7 +14,7 @@ self.addEventListener('push', function (event) {
       payload = event.data.json();
     } catch (err) {
       console.warn(
-        '[NotifyX] Invalid JSON payload. Falling back to text.'
+        '[@nandish029/notifyx] Invalid JSON payload. Falling back to text.'
       );
 
       payload = {
@@ -26,12 +26,12 @@ self.addEventListener('push', function (event) {
 
   // 🚨 Absolute fallback (no data at all)
   if (!payload) {
-    console.warn('[NotifyX] No payload received.');
+    console.warn('[@nandish029/notifyx] No payload received.');
 
     payload = {
       title: 'Notification',
       body: 'You have a new update.',
-      tag: 'notifyx-fallback',
+      tag: '@nandish029/notifyx-fallback',
     };
   }
 
@@ -41,7 +41,7 @@ self.addEventListener('push', function (event) {
     body: payload.body || '',
     icon: payload.icon || undefined,
     badge: payload.badge || undefined,
-    tag: payload.tag || 'notifyx-default',
+    tag: payload.tag || '@nandish029/notifyx-default',
     data: payload, // store full payload for click handling
   };
 
@@ -93,7 +93,7 @@ self.addEventListener('notificationclick', function (event) {
         }
       })
       .catch((err) => {
-        console.warn('[NotifyX] Click handling error:', err);
+        console.warn('[@nandish029/notifyx] Click handling error:', err);
       })
   );
 });

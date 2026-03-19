@@ -1,10 +1,10 @@
-# 🤝 Contributing to NotifyX
+# 🤝 Contributing to @nandish029/notifyx
 
-First off, thank you for joining the NotifyX mission! 🚀
+First off, thank you for joining the @nandish029/notifyx mission! 🚀
 
 Our goal is to make Web Push Notifications so simple that any developer, regardless of their tech stack, can implement them in under 10 minutes. We especially want to support **Vibecoders** who want drop-in, AI-friendly solutions.
 
-While the core NotifyX engine is written in Vanilla JavaScript, the true power of this framework lies in our **Integrations Ecosystem**.
+While the core @nandish029/notifyx engine is written in Vanilla JavaScript, the true power of this framework lies in our **Integrations Ecosystem**.
 
 ## 🎯 What we need help with
 We are actively looking for community contributions to expand our `integrations/` and `examples/` folders.
@@ -35,7 +35,7 @@ Every integration **must** include an `instructions.md` file.
 * Provide a clear, copy-paste example.
 
 ### 📝 Adding Examples
-If you have a cool implementation (e.g., NotifyX with Tailwind CSS or a Chatbot UI), please add it to the `examples/` folder!
+If you have a cool implementation (e.g., @nandish029/notifyx with Tailwind CSS or a Chatbot UI), please add it to the `examples/` folder!
 * **Rule:** Never include real VAPID keys. Use placeholders.
 
 ## 🚀 Pull Request Process
@@ -46,7 +46,7 @@ If you have a cool implementation (e.g., NotifyX with Tailwind CSS or a Chatbot 
 4. **Commit** with a clear message.
 5. **Push** and submit a Pull Request.
 
-**Note on Reviews:** I review all PRs to ensure they follow the NotifyX philosophy of simplicity and strict error handling. If you are an expert in a framework I'm not familiar with, I may ask for your help in explaining the "why" behind your code! Let's build this together.
+**Note on Reviews:** I review all PRs to ensure they follow the @nandish029/notifyx philosophy of simplicity and strict error handling. If you are an expert in a framework I'm not familiar with, I may ask for your help in explaining the "why" behind your code! Let's build this together.
 
 ## 💬 Code of Conduct
 Be kind, be helpful. We were all beginners once. Aim to educate and empower other developers.
