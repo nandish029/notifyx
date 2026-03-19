@@ -1,0 +1,17 @@
+{
+  "name": "notifyx",
+  "version": "1.1.0",
+  "description": "A lightweight, production-ready browser push notification framework",
+  "main": "frontend/index.js",
+  "type": "module",
+  "keywords": [
+    "push-notifications",
+    "service-worker",
+    "web-push",
+    "notifications",
+    "javascript",
+    "frontend-framework"
+  ],
+  "author": "Nandish",
+  "license": "MIT"
+}
