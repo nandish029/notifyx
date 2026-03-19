@@ -4,14 +4,22 @@
   "description": "A lightweight, production-ready browser push notification framework",
   "main": "frontend/index.js",
   "type": "module",
+  "files": [
+    "frontend/",
+    "integrations/",
+    "README.md",
+    "LICENSE"
+  ],
   "keywords": [
     "push-notifications",
     "service-worker",
     "web-push",
-    "notifications",
-    "javascript",
-    "frontend-framework"
+    "vibecoding"
   ],
   "author": "Nandish",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nandish029/notifyx.git"
+  }
 }
