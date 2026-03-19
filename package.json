@@ -20,6 +20,6 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/nandish029/notifyx.git"
+    "url": "git+https://github.com/nandish029/notifyx.git"
   }
 }
