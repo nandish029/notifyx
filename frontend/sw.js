@@ -40,6 +40,7 @@ self.addEventListener('push', function (event) {
   const options = {
     body: payload.body || '',
     icon: payload.icon || undefined,
+    image: payload.image || undefined, // 🖼️ NEW: Support for large banner images!
     badge: payload.badge || undefined,
     tag: payload.tag || '@nandish029/notifyx-default',
     data: payload, // store full payload for click handling
