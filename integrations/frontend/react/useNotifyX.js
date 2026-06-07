@@ -1,14 +1,14 @@
 import { useState, useEffect, useCallback } from 'react';
-import { setup@nandish029/notifyx, initNotifications, disableNotifications, getSubscriptionStatus } from '@nandish029/notifyx';
+import { setupNotifyX, initNotifications, disableNotifications, getSubscriptionStatus } from '@nandish029/notifyx';
 
 /**
- * ⚛️ use@nandish029/notifyx - Production-Grade React Hook
+ * ⚛️ useNotifyX - Production-Grade React Hook
  * * WHY THIS EXISTS:
  * React components render multiple times. If we put vanilla JS directly into a component, 
  * it can cause infinite loops, memory leaks, or crash during Server-Side Rendering (SSR) in Next.js.
  * This hook isolates the framework logic safely away from the UI.
  */
-export function use@nandish029/notifyx(publicKey) {
+export function useNotifyX(publicKey) {
   // We use a strict string-based status rather than a simple boolean.
   // This allows the UI to show exactly what is happening.
   const [status, setStatus] = useState('loading'); // 'loading' | 'subscribed' | 'unsubscribed' | 'denied' | 'unsupported' | 'error'
@@ -31,8 +31,8 @@ export function use@nandish029/notifyx(publicKey) {
 
     const initialize = async () => {
       try {
-        // Safe to call multiple times; @nandish029/notifyx handles deduplication internally.
-        setup@nandish029/notifyx({ publicKey });
+        // Safe to call multiple times; NotifyX handles deduplication internally.
+        setupNotifyX({ publicKey });
 
         // Check if the browser even supports Push APIs
         if (!('serviceWorker' in navigator) || !('PushManager' in window)) {

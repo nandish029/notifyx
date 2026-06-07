@@ -1,4 +1,4 @@
-# 🟢 How to use @nandish029/notifyx in Node.js (Simple Guide)
+# 🟢 How to use NotifyX in Node.js (Simple Guide)
 
 Welcome! While the React frontend *asks* the user for permission, your Node.js backend is the "Post Office". It stores the addresses (subscriptions) and actually *mails out* the notifications.
 
@@ -6,30 +6,27 @@ We have written a complete Express Router for you. You just need to plug it into
 
 ## Step 1: Install the Web-Push Library
 Your server needs a way to encrypt the messages before sending them to Google/Apple. Run this in your backend terminal:
-\`\`\`bash
+```bash
 npm install web-push
-\`\`\`
+```
 
-## Step 2: Create your VAPID Keys
-If you haven't made your secret passwords (VAPID keys) yet, you can generate them right now. Run this in your terminal:
-\`\`\`bash
-npx web-push generate-vapid-keys
-\`\`\`
+## Step 2: Use your VAPID Keys
+If you already ran the NotifyX setup CLI in your project root (`npx @nandish029/notifyx init`), you should already have a `.env` file generated with your secure VAPID keys.
 
-It will print out a **Public Key** and a **Private Key**. Copy them and paste them into your backend's `.env` file, along with an admin email.
+Ensure your backend has access to these keys (or copy the `.env` file to your backend directory if your backend runs in a separate folder):
 
-\`\`\`env
-VAPID_PUBLIC_KEY="paste_public_key_here"
-VAPID_PRIVATE_KEY="paste_private_key_here"
+```env
+VAPID_PUBLIC_KEY="your_public_key"
+VAPID_PRIVATE_KEY="your_private_key"
 CONTACT_EMAIL="mailto:your_email@gmail.com" 
-\`\`\`
+```
 *(Note: You must include `mailto:` in the email. Push services use this to contact you if your server sends too much spam).*
 
 ## Step 3: Connect the Router
 1. Copy the `push.controller.js` file we provided and put it in your `routes` or `controllers` folder.
 2. Open your main server file (usually `server.js` or `app.js`) and add these lines:
 
-\`\`\`javascript
+```javascript
 require('dotenv').config();
 const express = require('express');
 const webpush = require('web-push');
@@ -44,12 +41,12 @@ webpush.setVapidDetails(
   process.env.VAPID_PRIVATE_KEY
 );
 
-// 2. Turn on the @nandish029/notifyx routes
+// 2. Turn on the NotifyX routes
 const pushRoutes = require('./routes/push.controller');
 app.use('/api/notifications', pushRoutes);
 
 app.listen(3000, () => console.log('Server is running!'));
-\`\`\`
+```
 
 ## Step 4: Hook up your Database
 Open the `push.controller.js` file. At the very top, you will see "MOCK DATABASE". 
@@ -62,13 +59,13 @@ You need to replace those three small functions with your actual database code (
 When you want to send a notification to everyone, you just send a POST request to your `/api/notifications/broadcast` route. 
 
 You can test this using a tool like Postman. Send this JSON data to the route:
-\`\`\`json
+```json
 {
   "title": "Hello World!",
   "body": "This is my very first push notification.",
   "url": "https://mywebsite.com"
 }
-\`\`\`
+```
 Your server will automatically encrypt it and send it to every user in your database!
 
 ## 🧠 Good to Know: The "410 Gone" Error

@@ -1,16 +1,26 @@
-# 🔔 NotifyX
+# 🔔 NotifyX - Lightweight Web Push SDK
 
-[![npm version](https://img.shields.io/badge/npm-v1.1.0-blue.svg)](https://www.npmjs.com/)
+[![CI](https://github.com/nandish029/notifyx/actions/workflows/ci.yml/badge.svg)](https://github.com/nandish029/notifyx/actions/workflows/ci.yml)
+[![Coverage](https://codecov.io/gh/nandish029/notifyx/branch/main/graph/badge.svg)](https://codecov.io/gh/nandish029/notifyx)
+[![npm version](https://badge.fury.io/js/@nandish029%2Fnotifyx.svg)](https://badge.fury.io/js/@nandish029%2Fnotifyx)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-**The zero-friction, production-ready framework for Web Push Notifications.**
+NotifyX is a lightweight, backend-agnostic **Software Development Kit (SDK)** that abstracts away the notoriously complex, error-prone boilerplate of the browser Push API and Service Workers. It acts as a safety layer between your application and the user's operating system, providing a clean, predictable way to manage push subscriptions and ensure your notifications actually reach your users.
 
-*Note: This framework was proudly architected and developed with the assistance of AI (ChatGPT and Gemini).*
-
----
+## 🎉 New in v2.0!
+* **Vibe Coding CLI**: Get started in 5 seconds by running `npx @nandish029/notifyx init`. It auto-generates VAPID keys, creates your `.env`, and sets up your framework integrations automatically!
+* **TypeScript Support**: Full autocomplete for payloads, webhooks, and core hooks.
+* **Offline Analytics Engine**: Built-in IndexedDB queueing. If a user clicks a notification while offline, the service worker caches the analytics event and uses the Background Sync API to push it to your server once they reconnect.
 
 ## 🤔 What is NotifyX?
 NotifyX is a lightweight, backend-agnostic JavaScript framework that abstracts away the notoriously complex, error-prone boilerplate of the browser Push API and Service Workers. It acts as a safety layer between your application and the user's operating system, providing a clean, predictable way to manage push subscriptions and ensure your notifications actually reach your users.
+
+## 🚀 Quick Start
+To get everything set up instantly, run the automated CLI in your project root:
+```bash
+npx @nandish029/notifyx init
+```
+This will ask you a few questions and set everything up for you automatically!
 
 ## 💡 Why does it exist?
 Building Web Push from scratch is painful. Developers are forced to juggle VAPID keys, Service Worker lifecycles, base64 conversions, and obscure browser security rules. A single typo in your Service Worker scope can silently break notifications for all users.
@@ -80,3 +90,6 @@ For deep dives into the setup and payload structures, please consult the `docs/`
 
 ## 📄 License
 Released under the [MIT License](LICENSE).
+
+---
+*Note: This SDK was proudly architected and developed with the assistance of advanced Large Language Models (LLMs).*

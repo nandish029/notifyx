@@ -1,4 +1,4 @@
-# 🐘 How to use @nandish029/notifyx in PHP
+# 🐘 How to use NotifyX in PHP
 
 Welcome! Whether you are using plain PHP, Laravel, or Symfony, this guide will help you set up your server to send push notifications. 
 
@@ -6,18 +6,20 @@ We have written a complete PHP "Controller" for you. It handles all the complica
 
 ## Step 1: Install the Web-Push Library
 Your server needs a way to securely lock (encrypt) the messages before sending them across the internet. We use a popular package for this. Run this in your terminal:
-\`\`\`bash
+```bash
 composer require minishlink/web-push
-\`\`\`
+```
 
-## Step 2: Add your Secret Keys
-You need a Public Key and a Private Key to prove you own the website. Put them in your `.env` file:
+## Step 2: Use your VAPID Keys
+If you already ran the NotifyX setup CLI in your project root (`npx @nandish029/notifyx init`), you should already have a `.env` file generated with your secure VAPID keys.
 
-\`\`\`env
-VAPID_PUBLIC_KEY="paste_your_public_key_here"
-VAPID_PRIVATE_KEY="paste_your_private_key_here"
+Ensure your backend has access to these keys (or copy the `.env` file to your backend directory if your backend runs in a separate folder):
+
+```env
+VAPID_PUBLIC_KEY="your_public_key"
+VAPID_PRIVATE_KEY="your_private_key"
 CONTACT_EMAIL="mailto:your_email@gmail.com"
-\`\`\`
+```
 *(Note: Always include `mailto:` in the email!).*
 
 ## Step 3: Connect your Database
@@ -32,7 +34,7 @@ You need to update these three functions to talk to your real database (using My
 ## Step 4: Create the API Routes
 Your frontend needs a URL to send data to. Create a simple `api.php` file to catch the requests from your website and pass them to our Controller:
 
-\`\`\`php
+```php
 <?php
 require_once 'PushNotificationController.php';
 $controller = new PushNotificationController();
@@ -52,7 +54,7 @@ elseif ($method === 'DELETE' && $uri === '/api/notifications/unsubscribe') {
 elseif ($method === 'POST' && $uri === '/api/notifications/broadcast') {
     $controller->broadcast("Hello PHP!", "This is a test notification.");
 }
-\`\`\`
+```
 
 ## 🧠 Good to Know: How PHP sends messages so fast
 If you have 10,000 users, sending them messages one by one would take forever. 

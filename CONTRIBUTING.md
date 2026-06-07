@@ -4,7 +4,7 @@ First off, thank you for joining the @nandish029/notifyx mission! 🚀
 
 Our goal is to make Web Push Notifications so simple that any developer, regardless of their tech stack, can implement them in under 10 minutes. We especially want to support **Vibecoders** who want drop-in, AI-friendly solutions.
 
-While the core @nandish029/notifyx engine is written in Vanilla JavaScript, the true power of this framework lies in our **Integrations Ecosystem**.
+While the core @nandish029/notifyx engine is written in strictly-typed **TypeScript** and heavily bundled for performance, the true power of this framework lies in our **Integrations Ecosystem**.
 
 ## 🎯 What we need help with
 We are actively looking for community contributions to expand our `integrations/` and `examples/` folders.
@@ -51,4 +51,4 @@ If you have a cool implementation (e.g., @nandish029/notifyx with Tailwind CSS o
 ## 💬 Code of Conduct
 Be kind, be helpful. We were all beginners once. Aim to educate and empower other developers.
 
-*This framework was proudly architected and developed with the assistance of ChatGPT and Gemini.*
+*This framework was proudly architected and developed with the assistance of advanced Large Language Models (LLMs).*

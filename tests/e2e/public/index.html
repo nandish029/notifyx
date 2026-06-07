@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>NotifyX Integration Tests</title>
+</head>
+<body>
+  <h1>Integration Fixture</h1>
+  <script type="module">
+    import { setupNotifyX, initNotifications, disableNotifications, getSubscriptionStatus } from '/index.js';
+
+    const validPublicKey = 'BJtOVcH01BGeWUOWzdkGCt1MY3L5qSg9e0tp-dlotDieaYZ389eVkQmsdFDTHcm-m2tziv-ZKjbytulIUWQFn70';
+    window.validPublicKey = validPublicKey;
+    window.setupNotifyX = setupNotifyX;
+    window.initNotifications = initNotifications;
+    window.disableNotifications = disableNotifications;
+    window.getSubscriptionStatus = getSubscriptionStatus;
+
+    window.NotifyX = {
+      setup: () => setupNotifyX({ publicKey: validPublicKey, debug: true }),
+      init: () => initNotifications(),
+      disable: () => disableNotifications(),
+      getStatus: () => getSubscriptionStatus()
+    };
+  </script>
+</body>
+</html>

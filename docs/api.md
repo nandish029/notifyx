@@ -1,8 +1,8 @@
 # 📖 API Reference
 
-@nandish029/notifyx exposes five primary exports. 
+NotifyX exposes five primary exports. 
 
-## `setup@nandish029/notifyx(config)`
+## `setupNotifyX(config)`
 Must be called exactly once before any other framework methods.
 
 * **Arguments:**
@@ -31,4 +31,4 @@ Quietly checks if the user is already subscribed without triggering any browser 
 * **Returns:** `Promise<PushSubscription | null>`
 
 ## `VERSION`
-* **Returns:** `string` (e.g., "1.1.0").
+* **Returns:** `string` (e.g., "2.0.0").

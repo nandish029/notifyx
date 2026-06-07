@@ -1,5 +1,5 @@
 import React from 'react';
-import { use@nandish029/notifyx } from './use@nandish029/notifyx';
+import { useNotifyX } from './useNotifyX';
 
 /**
  * ⚛️ SubscribeButton - Drop-in UI Component
@@ -9,7 +9,7 @@ import { use@nandish029/notifyx } from './use@nandish029/notifyx';
  * @param {function} onUnsubscribeSuccess - Triggers when you need to delete the backend record
  */
 export default function SubscribeButton({ publicKey, onSubscribeSuccess, onUnsubscribeSuccess }) {
-  const { status, error, subscriptionData, subscribe, unsubscribe } = use@nandish029/notifyx(publicKey);
+  const { status, error, subscriptionData, subscribe, unsubscribe } = useNotifyX(publicKey);
 
   const handleToggle = async () => {
     if (status === 'subscribed') {

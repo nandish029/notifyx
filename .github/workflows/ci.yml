@@ -1,0 +1,60 @@
+name: NotifyX CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  test-and-build:
+    runs-on: windows-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x]
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Build SDK
+      run: npm run build
+
+    - name: Run Unit Tests (Jest)
+      run: npm run test
+
+    - name: Install Playwright Browsers
+      run: npx playwright install --with-deps chromium
+
+    - name: Run Integration Tests (Playwright)
+      run: npm run test:integration
+
+    - name: Verify Vite Vanilla Build
+      run: |
+        cd tests/frameworks/package-test
+        npm install
+        npm install ../../../
+        npm run build
+
+    - name: Verify React Build
+      run: |
+        cd tests/frameworks/react-test
+        npm install
+        npm install ../../../
+        npm run build
+
+    - name: Verify Next.js Build
+      run: |
+        cd tests/frameworks/next-test
+        npm install
+        npm install ../../../
+        npm run build
