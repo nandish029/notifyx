@@ -29,8 +29,15 @@ jobs:
     - name: Build SDK
       run: npm run build
 
-    - name: Run Unit Tests (Jest)
-      run: npm run test
+    - name: Run Unit Tests with Coverage (Jest)
+      run: npm run test:coverage
+
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v4
+      env:
+        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+      with:
+        fail_ci_if_error: false
 
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps chromium

@@ -24,6 +24,7 @@
   "scripts": {
     "build": "tsup",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js tests/unit",
+    "test:coverage": "node --experimental-vm-modules node_modules/jest/bin/jest.js tests/unit --coverage",
     "test:integration": "playwright test"
   },
   "files": [
